@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "index";
+}
+<style>
+    * {
+        font-family: "Courier New";
+        font-size: large;
+    }
+</style>
+<h2>Index</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Edit</td>
+            <td>Delete</td>
+            <td>Details</td>
+        </tr>
+        </thead>
+        <tbody id="abc">
+        @*<td>
+                        @Html.ActionLink("Edit", "edit", new { @id = emp.emp_id })
+                    </td>
+                </tr>*@
+
+        </tbody>
+        <tbody>
+        <tr>
+            <td colspan="5" align="center">
+                <a href="/employee/add" class="btn btn-success" style="font-size: larger" role="button">ADD</a>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'>
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Employee/index1",
+            dataType: "json",
+            success: function (response) {
+                //alert(response);
+                $.each(response, function (i, item) {
+                    $("#abc").append("<tr><td>" + item.emp_id + "</td><td>" + item.emp_name + "</td><td><a class=\"btn btn-primary\" style=\"font-size:large\" href=\"employee/edit/" + item.emp_id + "\">Edit</a></td>" + "<td><a class=\"btn btn-danger\" style=\"font-size:large\" href=\"employee/delete/" + item.emp_id + "\">Delete</a></td>" + "<td><a class=\"btn btn-warning\" style=\"font-size:large\" href=\"employee/dbdetails/" + item.emp_id + "\">Details</a></td></tr>");
+                });
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="~/Content/bootstrap.min.js"></script>

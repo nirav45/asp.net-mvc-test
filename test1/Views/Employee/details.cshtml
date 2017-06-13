@@ -1,0 +1,37 @@
+﻿@model test1.Models.employee
+
+@{
+    ViewBag.Title = "details";
+}
+
+<h2>details</h2>
+
+@Html.BeginForm()
+{
+<div id="tmp">
+    <h4>employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (var item in Model.details)
+        {
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(m => item.emp_id)     
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(m => item.emp_name)
+         </dd>
+       }
+    </dl>
+    <input type="submit" value="save" />
+    @Html.ActionLink("edit","edit","employee",new { id = 0 },null);
+</div>>
+}

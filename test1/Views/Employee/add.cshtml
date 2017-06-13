@@ -1,0 +1,41 @@
+﻿@model test1.Models.dbemp
+@{
+    ViewBag.Title = "add";
+}
+<style>
+    * {
+        font-family: "Courier New";
+        font-size: large;
+    }
+</style>
+<script src="~/Content/bootstrap.min.css"></script>
+<script src="~/Content/bootstrap.min.js"></script>
+<h2>Add</h2>
+@using (Html.BeginForm())
+{
+    <div class="table-responsive">
+          <table class="table table-striped">
+            <tr>
+                <td>
+                    EMP ID :
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.emp_id)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    EMP NAME :
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.emp_name)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" class="btn btn-success btn-lg" value="Submit"/>
+                </td>
+            </tr>
+          </table>
+    </div>
+}
